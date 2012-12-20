@@ -5,4 +5,5 @@ gem 'oauth',   '~>0.4'
 
 group :test do
   gem 'rspec'
+  gem 'guard'
 end
