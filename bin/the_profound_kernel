@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+ProfoundKernel.configure do |config|
+  config.consumer_key       = ENV['PK_CONSUMER_KEY']
+  config.consumer_secret    = ENV['PK_CONSUMER_KEY']
+  config.oauth_token        = ENV['PK_OAUTH_TOKEN']
+  config.oauth_token_secret = ENV['PK_OAUTH_TOKEN_SECRET']
+
+  config.right_phrase = "deep-seated"
+  config.wrong_phrase = "deep seeded"
+
+  config.right_phrase_regex = /deep[\s-]?seated/i
+  config.wrong_phrase_regex = /deep[\s-]?seeded/i
+end
