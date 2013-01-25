@@ -1,14 +1,34 @@
 #!/usr/bin/env ruby
 
+require './lib/the_profound_kernel'
+
 ProfoundKernel.configure do |config|
   config.consumer_key       = ENV['PK_CONSUMER_KEY']
   config.consumer_secret    = ENV['PK_CONSUMER_KEY']
   config.oauth_token        = ENV['PK_OAUTH_TOKEN']
   config.oauth_token_secret = ENV['PK_OAUTH_TOKEN_SECRET']
 
+  config.consumer_key       = "xjcYOaZYPdAwzKbF7b4KfQ"
+  config.consumer_secret    = "wzduwy8KHqgSxQ87jphJZXhnqnYbQDeZ2mJ1s5Oow1Y"
+  config.oauth_token        = "1008539275-ZP5xg0SHlB2VRONSoGFttm1yoaWlsW377bXlsxI"
+  config.oauth_token_secret = "y3vzqy4XcmofXCz4oPCBC5jCuZhw4Q5yNHVGEMCatLE"
+
   config.right_phrase = "deep-seated"
   config.wrong_phrase = "deep seeded"
 
   config.right_phrase_regex = /deep[\s-]?seated/i
-  config.wrong_phrase_regex = /deep[\s-]?seeded/i
+  config.wrong_phrase_regex = /deep[\s-]?seeded/ # Make sure we exclude Proper Names
+
+  config.dry_run = true
+end
+
+pk             = ProfoundKernel::Processor.new
+search_results = pk.run_search
+clean_search   = pk.sanitize_search(search_results)
+
+clean_search.each do |tweet|
+  if pk.validate_tweet(tweet)
+    # do something
+    pk.tweet_correction(tweet)
+  end
 end
