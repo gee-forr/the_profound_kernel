@@ -67,7 +67,7 @@ module ProfoundKernel
     end
 
     def tweet_correction(tweet)
-      msg = "@#{tweet.from_user} I think you mean #{ProfoundKernel.configuration.right_phrase}."
+      msg = construct_correction(tweet)
 
       if ProfoundKernel.configuration.dry_run
         puts "Replying to [#{tweet.id}] [#{tweet.text}] - [#{msg}]"
@@ -80,6 +80,10 @@ module ProfoundKernel
     end
 
     private
+
+    def construct_correction(tweet)
+      "@#{tweet.from_user} I think you mean \"#{ProfoundKernel.configuration.right_phrase}\"."
+    end
 
     def recent_offender?(user)
       3.weeks.ago < offender_time(user)
