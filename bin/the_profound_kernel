@@ -8,11 +8,6 @@ ProfoundKernel.configure do |config|
   config.oauth_token        = ENV['PK_OAUTH_TOKEN']
   config.oauth_token_secret = ENV['PK_OAUTH_TOKEN_SECRET']
 
-  config.consumer_key       = "xjcYOaZYPdAwzKbF7b4KfQ"
-  config.consumer_secret    = "wzduwy8KHqgSxQ87jphJZXhnqnYbQDeZ2mJ1s5Oow1Y"
-  config.oauth_token        = "1008539275-ZP5xg0SHlB2VRONSoGFttm1yoaWlsW377bXlsxI"
-  config.oauth_token_secret = "y3vzqy4XcmofXCz4oPCBC5jCuZhw4Q5yNHVGEMCatLE"
-
   config.right_phrase = "deep-seated"
   config.wrong_phrase = "deep seeded"
 
