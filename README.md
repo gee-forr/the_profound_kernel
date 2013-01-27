@@ -1,6 +1,6 @@
 # The Profound Kernel
 
-The Profound Kernel is a really, really obnoxious twitter bot. Follow him on @ProfoundKernel
+The Profound Kernel is a really, really obnoxious twitter bot. You can follow @ProfoundKernel on twitter.
 
 # What it does
 
@@ -21,7 +21,7 @@ Whilst the PK is obnoxious, I don't want it to be impolite or stupid - therefore
 
 # Why
 
-I'm a grammar nazi. Simple as that. I at once both intrigued and disgusted with the way the English language is mutating, and this is my admittedly tiny way of fighting back.
+I'm a grammar nazi. Simple as that. I'm at once both intrigued and disgusted with the way the English language is mutating, and this is my admittedly tiny way of fighting back.
 
 I also wanted to play around with some interesting patterns and technologies, namely, 
 
@@ -38,6 +38,6 @@ I plan to generalise this into a reusable gem, so some enterprising soul (probab
 
 Many thanks to the following people:
 
-[Ché Nxusani](https://github.com/codefendant) for the pairing sessions, and nagging me to complete it.
-
-[Kevin McKelvin](https://github.com/kmckelvin) for some tips on paring down the initial search results.
+1. [Ché Nxusani](https://github.com/codefendant) for the pairing sessions, and nagging me to complete it.
+2. [Kevin McKelvin](https://github.com/kmckelvin) for some tips on paring down the initial search results.
+3. And of course, the biggest thanks goes to [Stealth Mountain](https://twitter.com/StealthMountain) for planting the seed, or should I say kernel, for this project ;)
