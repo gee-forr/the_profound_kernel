@@ -16,11 +16,23 @@ module ProfoundKernel
     attr_accessor :consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret
     attr_accessor :right_phrase, :wrong_phrase
     attr_accessor :right_phrase_regex, :wrong_phrase_regex
-    attr_accessor :dry_run
+    attr_accessor :dry_run, :process_sleep, :offender_cooldown
+
+    def initialize
+      # Set some sensible defaults
+      @dry_run           ||= false
+      @process_sleep     ||= 10*60
+      @offender_cooldown ||= 3 # In weeks
+    end
   end
 
   class Processor
     LAST_TWEET_KEY = 'last_corrected_tweet'
+
+    trap('INT') do
+      puts "Exiting."
+      exit
+    end
 
     def initialize
       Twitter.configure do |config|
@@ -31,6 +43,13 @@ module ProfoundKernel
       end
 
       @redis = Redis.new
+    end
+
+    def run
+      loop do
+        process!
+        sleep ProfoundKernel.configuration.process_sleep
+      end
     end
 
     def process!
@@ -86,7 +105,8 @@ module ProfoundKernel
     end
 
     def recent_offender?(user)
-      3.weeks.ago < offender_time(user)
+      duration = ProfoundKernel.configuration.offender_cooldown
+      duration.weeks.ago < offender_time(user)
     end
 
     def key_for(key) # Just a namespacing utility to separate redis data
@@ -94,9 +114,10 @@ module ProfoundKernel
     end
 
     def offender_time(user)
-      time = @redis.get(key_for(user))
+      time     = @redis.get(key_for(user))
+      duration = ProfoundKernel.configuration.offender_cooldown + 1
 
-      time.nil? ? 1.year.ago: time.to_time
+      time.nil? ? duration.weeks.ago: time.to_time # Set a value outside of cooldown range if there is no key for that user
     end
 
     def update_offenders_list(user)

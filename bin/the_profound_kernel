@@ -17,4 +17,5 @@ ProfoundKernel.configure do |config|
   config.dry_run = true
 end
 
-ProfoundKernel::Processor.new.process!
+#ProfoundKernel::Processor.new.process!
+ProfoundKernel::Processor.new.run
