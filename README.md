@@ -39,4 +39,5 @@ I plan to generalise this into a reusable gem, so some enterprising soul (probab
 Many thanks to the following people:
 
 [Ché Nxusani](https://github.com/codefendant) for the pairing sessions, and nagging me to complete it.
+
 [Kevin McKelvin](https://github.com/kmckelvin) for some tips on paring down the initial search results.
