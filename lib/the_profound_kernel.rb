@@ -35,6 +35,15 @@ module ProfoundKernel
       @redis = Redis.new
     end
 
+    def process!
+      search_results = run_search
+      clean_search   = sanitize_search(search_results)
+
+      clean_search.each do |tweet|
+        tweet_correction(tweet) if should_correct?(tweet)
+      end
+    end
+
     def run_search
       Twitter.search(ProfoundKernel.configuration.wrong_phrase, :result_type => "recent").results
     end
@@ -72,11 +81,13 @@ module ProfoundKernel
       update_last_known_correction(tweet.id)
     end
 
+    private
+
     def recent_offender?(user)
       3.weeks.ago < offender_time(user)
     end
 
-    def key_for(key)
+    def key_for(key) # Just a namespacing utility to separate redis data
       "#{ProfoundKernel.configuration.right_phrase}:#{key}"
     end
 

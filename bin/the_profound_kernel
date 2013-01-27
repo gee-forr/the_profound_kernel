@@ -22,13 +22,4 @@ ProfoundKernel.configure do |config|
   config.dry_run = true
 end
 
-pk             = ProfoundKernel::Processor.new
-search_results = pk.run_search
-clean_search   = pk.sanitize_search(search_results)
-
-clean_search.each do |tweet|
-  if pk.should_correct?(tweet)
-    # do something
-    pk.tweet_correction(tweet)
-  end
-end
+ProfoundKernel::Processor.new.process!
