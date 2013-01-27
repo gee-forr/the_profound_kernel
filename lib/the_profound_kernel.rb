@@ -76,22 +76,26 @@ module ProfoundKernel
       3.weeks.ago < offender_time(user)
     end
 
+    def key_for(key)
+      "#{ProfoundKernel.configuration.right_phrase}:#{key}"
+    end
+
     def offender_time(user)
-      time = @redis.get(user)
+      time = @redis.get(key_for(user))
 
       time.nil? ? 1.year.ago: time.to_time
     end
 
     def update_offenders_list(user)
-      @redis.set user, Time.now
+      @redis.set key_for(user), Time.now
     end
 
     def update_last_known_correction(id)
-      @redis.set LAST_TWEET_KEY, id
+      @redis.set key_for(LAST_TWEET_KEY), id
     end
 
     def last_known_correction
-      @redis.get(LAST_TWEET_KEY).to_i or 1
+      @redis.get(key_for(LAST_TWEET_KEY)).to_i or 1
     end
   end
 end
