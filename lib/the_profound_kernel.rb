@@ -2,8 +2,6 @@ require "rubygems"
 require "bundler/setup"
 Bundler.require(:default)
 
-require "pry"
-
 module ProfoundKernel
   class << self
     attr_accessor :configuration
