@@ -27,7 +27,7 @@ search_results = pk.run_search
 clean_search   = pk.sanitize_search(search_results)
 
 clean_search.each do |tweet|
-  if pk.validate_tweet(tweet)
+  if pk.should_correct?(tweet)
     # do something
     pk.tweet_correction(tweet)
   end
