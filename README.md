@@ -1,6 +1,6 @@
 # The Profound Kernel
 
-The Profound Kernel is a really, really obnoxious twitter bot.
+The Profound Kernel is a really, really obnoxious twitter bot. Follow him on @ProfoundKernel
 
 # What it does
 
