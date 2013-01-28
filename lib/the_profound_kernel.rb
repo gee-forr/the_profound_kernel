@@ -90,6 +90,7 @@ module ProfoundKernel
 
       if ProfoundKernel.configuration.dry_run
         puts "Replying to [#{tweet.id}] [#{tweet.text}] - [#{msg}]"
+        $stdout.flush # Flush the output buffer so dry runs appear in foreman
       else
         Twitter.update(msg, {in_reply_to_status_id: tweet.id})
       end
