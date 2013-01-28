@@ -1,6 +1,6 @@
 # The Profound Kernel
 
-The Profound Kernel is a really, really obnoxious twitter bot. You can follow @ProfoundKernel on twitter.
+The Profound Kernel is a really, really obnoxious twitter bot. You can follow the @ProfoundKernel on twitter.
 
 # What it does
 
@@ -13,7 +13,7 @@ So yeah - totally obnoxious.
 Whilst the PK is obnoxious, I don't want it to be impolite or stupid - therefore it complies to the following rules:
 
 1. It will not correct a user that has been previously corrected in the last 3 weeks.
-2. I will not correct a user retweeting someone else's mistaken use of deep-seated.
+2. It will not correct a user retweeting someone else's mistaken use of deep-seeded.
 3. It will not correct an already corrected tweet.
 4. It will not correct a tweet that mentions a previous offender.
 5. It will not correct a tweet that already has the correct phrase in it as well.
