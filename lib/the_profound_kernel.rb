@@ -2,6 +2,8 @@ require "rubygems"
 require "bundler/setup"
 Bundler.require(:default)
 
+require 'uri' # Used for parsing redis server URI
+
 module ProfoundKernel
   class << self
     attr_accessor :configuration
