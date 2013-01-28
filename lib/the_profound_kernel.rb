@@ -42,7 +42,15 @@ module ProfoundKernel
         config.oauth_token_secret = ProfoundKernel.configuration.oauth_token_secret
       end
 
-      @redis = Redis.new
+      @redis = nil
+
+      if ENV['REDISTOGO_URL']
+        redis_uri = URI.parse ENV['REDISTOGO_URL']
+        @redis    = Redis.new(host: redis_uri.host, port: redis_uri.port, password: redis_uri.password)
+      else
+        @redis = Redis.new
+      end
+
     end
 
     def run
